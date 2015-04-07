@@ -22,6 +22,15 @@ svg {
   border-radius: 5px;
   cursor: pointer;
 }
+@media (max-width: 640px) {
+  #widget-caller {
+    left: 1%;
+    margin: 0;
+    width: 98%;
+    z-index: 20;
+    text-align: center;
+  }
+}
 #widget {
   position: fixed;
   z-index: 10;
@@ -67,4 +76,28 @@ svg {
   border: 1px solid #ccc;
   box-shadow: 0 0 3px rgba(0,0,0,0.2);
   border-radius: 5px;
+}
+@media (max-width: 640px) {
+  #footer {
+    width: 98%;
+    right: 1%;
+  }
+}
+.fb-box {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+}
+.fb-box .fb-like {
+  margin-left: 5px;
+}
+.fb-like-link {
+  position: fixed;
+  bottom: 85px;
+  right: 20px;
+}
+@media (max-width: 640px) {
+  .fb-box {
+    top: 50px;
+  }
 }
