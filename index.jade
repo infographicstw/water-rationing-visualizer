@@ -28,9 +28,9 @@ html(lang="en",xmlns:xlink="http://www.w3.org/1999/xlink")
       image#marker(x="410",y="85",width="32",height="45",xlink:href="marker.png")
       //-image#mapbk(x="55",y="130",width="300",height="300",xlink:href="map-bk.png",opacity="0.8")
       g#texts(transform="translate(95,-80)")
-        text(x="350",y="200",style="font-size:2.5em") {{target.name}}
-        text(x="360",y="230",style="font-size:1.5em") {{target.type}}
-        text(x="360",y="250",style="font-size:12px") {{target.comment}}
+        text(x="350",y="200",style="font-size:2.5em",ng-cloak) {{target.name}}
+        text(x="360",y="230",style="font-size:1.5em",ng-cloak) {{target.type}}
+        text(x="360",y="250",style="font-size:12px",ng-cloak) {{target.comment}}
         g#legend(transform="translate(360,265)")
           rect(x="0",y="0",width="30",height="16",fill="#48762e")
           text(x="36",y="13") 週一、週二限水
