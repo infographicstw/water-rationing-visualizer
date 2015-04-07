@@ -1,0 +1,59 @@
+doctype html
+//- basic libraries: jquery(1.10.2), d3js(3.3.11), angularjs(1.2.3), bootstrap(3.0)/semantic-ui(0.9.3/0.9.5)
+- var use = { cdn: true, og: true, favicon: true }
+- var lib = { jquery: true, d3js: true, angular: true, bootstrap: true, semantic: false }
+- var assets = "assets"
+- var thumbnail = "http://data.infographics.tw/viz/water-rationing/thumbnail.png"
+- var favicon = "http://data.infographics.tw/viz/water-rationing/marker.png"
+html(lang="en",xmlns:xlink="http://www.w3.org/1999/xlink")
+  head(prefix="og: http://ogp.me/ns#")
+    meta(charset="utf-8")
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title 第三階段限水資訊
+    // libraries
+    include library.jade
+    // custom files
+    link(rel="stylesheet",type="text/css",href="index.css")
+    script(src="https://maps.googleapis.com/maps/api/js?v=3.exp")
+    script(type="text/javascript",src="topojson.js")
+    script(type="text/javascript",src="index.js")
+  body(ng-app="main",ng-controller="main")
+    svg(width="98%",height="96%",viewBox="0 0 800 600",preserveAspectRatio="xMidYMid")
+      g#geoblock
+      image#marker(x="410",y="85",width="32",height="45",xlink:href="marker.png")
+      //-image#mapbk(x="55",y="130",width="300",height="300",xlink:href="map-bk.png",opacity="0.8")
+      g#texts(transform="translate(95,-80)")
+        text(x="350",y="200",style="font-size:2.5em") {{target.name}}
+        text(x="360",y="230",style="font-size:1.5em") {{target.type}}
+        text(x="360",y="250",style="font-size:12px") {{target.comment}}
+        g#legend(transform="translate(360,265)")
+          rect(x="0",y="0",width="30",height="16",fill="#48762e")
+          text(x="36",y="13") 週一、週二限水
+          rect(x="0",y="23",width="30",height="16",fill="#b5878b")
+          text(x="36",y="36") 週三、週四限水
+          rect(x="0",y="46",width="30",height="16",fill="#802e23")
+          text(x="36",y="59") 週五、週六限水
+        g#additional(transform="translate(340,380)")
+          text(dy="-5",style="font-size:1.5em") 額外資訊
+          text(dy="20",style="font-size:12px") 週五、週六限水區
+          text(dx="20",dy="40",style="font-size:12px") 新莊：中環路以西、新北大道以南
+          text(dx="20",dy="60",style="font-size:12px") 五股：成泰路一、二段以西、中興路四段
+          text(dx="20",dy="80",style="font-size:12px") 樹林：柑樹地區與民和街、信和街、
+          text(dx="55",dy="100",style="font-size:12px") 德和街、中和街、吉祥街以外
+          text(dy="120",style="font-size:12px") 週一、週二限水區
+          text(dx="20",dy="140",style="font-size:12px") 土城：中央路三段(承天路口後)、四段、
+          text(dx="55",dy="160",style="font-size:12px") 城林路、忠承路、承天路以南
+          text(dx="20",dy="180",style="font-size:12px") 樹林：民和街、信和街、德和街、
+          text(dx="55",dy="200",style="font-size:12px") 中和街、吉祥街、柑園地區
+
+      g#clickblock
+
+
+      #widget-caller(ng-click="openWidget()") 我家在哪裡？
+      #widget(ng-class="{'active':toggleWidget}")
+        .title 我家在哪裡？
+        input.form-control(type="text",placeholder="輸入地址或地標，例如：樹林車站",ng-model="address")
+        .btn.btn-default(ng-click="goto()") 好！
+    #footer
+      |  非官方資料，僅供參考，若有出入請以自來水公司公布為準。資料來源：
+      a(href="http://www.wra.gov.tw/") 經濟部水利署
