@@ -82,9 +82,31 @@ svg
 
 .fb-like-link
   position: fixed
-  bottom: 85px
-  right: 20px
+  bottom: 90px
+  right: 10px
 
 @media (max-width: 640px)
   .fb-box
     top: 50px
+
+#reservoir
+  position: fixed
+  bottom: 20px
+  left: 10px
+  text-align: center
+  cursor: pointer
+  .img
+    display: inline-block
+    width: 48px
+    height: 48px
+    background: url(reservoir.png) center center no-repeat
+    background-size: cover
+  .text
+    font-size: 12px
+
+@media (max-width: 640px)
+  #reservoir
+    bottom: 90px
+    .img
+      width: 32px
+      height: 32px
