@@ -20,6 +20,7 @@ angular.module \main, <[]>
       3: "週五、週六限水"
       1: "週一、週二限水"
       2: "週三、週四限水"
+      4: \不受影響
     settype = -> 
       $scope.target.type = typehash[it]
 
